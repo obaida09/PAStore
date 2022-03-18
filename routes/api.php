@@ -14,6 +14,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group([
+  'middleware' => 'api',
+  'namespace' => 'Api'
+
+], function () {
+  // Route::post('/login', [AuthController::class, 'login']);
+  // Route::post('/register', [AuthController::class, 'register']);
+  // Route::post('/logout', [AuthController::class, 'logout']);
+  // // Route::post('/refresh', [AuthController::class, 'refresh']);
+
+  Route::post('register', 'AuthController@register');
+  Route::post('login', 'AuthController@login');
+
+  Route::group(['middleware' => 'jwt.auth'], function () {
+    Route::get('product/{id}', 'ProductController@getProduct');
+    Route::get('show-cart', 'ShoppingCartController@showCart');
+    Route::get('site-sttings', 'SiteController@getSettings');
+    Route::post('rating', 'ProductController@ratingProduct');
+    Route::post('add-to-cart', 'ShoppingCartController@store');
+    Route::post('remove-product-cart/{row_id}', 'ShoppingCartController@removeProductCart');
+    Route::post('delete-cart', 'ShoppingCartController@deleteCart');
+  });
 });

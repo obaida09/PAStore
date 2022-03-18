@@ -22,5 +22,4 @@ class Department extends Model
   {
     return $this->hasOne('App\Models\Department', 'id', 'parent');
   }
-
 }

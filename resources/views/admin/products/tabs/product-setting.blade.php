@@ -107,7 +107,7 @@
 
       <label>Chose Status</label>
       <select class="form-control status" name="status">
-        <option value="active" @if ($product->status == 'active')  selected @endif>Active</option>
+        <option value="active"  @if ($product->status == 'active')  selected @endif>Active</option>
         <option value="pending" @if ($product->status == 'pending') selected @endif>Pending</option>
         <option value="refused" @if ($product->status == 'refused') selected @endif>Refused</option>
       </select>

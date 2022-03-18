@@ -64,16 +64,16 @@ $(document).ready(function(){
                   @csrf
                   @method('PUT')
 
-                  <div class="input-group is-filled input-group-dynamic mt-5">
-                    <label class="form-label" for="exampleInputEmail1">Department Name in Arabic</label>
+                  <div class="input-group is-filled input-group-outline mt-5">
+                    <label class="form-label">Department Name in Arabic</label>
                     <input type="text" name="department_name_ar"  value="{{$department->department_name_ar}}" class="form-control">
                   </div>
                   @error('department_name_ar')
                     <div style="color: rgba(255, 0, 0, 0.692)" class="form-text">{{$message}}</div>
                   @enderror
 
-                  <div class="input-group is-filled input-group-dynamic mt-5">
-                    <label class="form-label" for="exampleInputEmail1">Department Name in English</label>
+                  <div class="input-group is-filled input-group-outline mt-5">
+                    <label class="form-label">Department Name in English</label>
                     <input type="text" name="department_name_en"  value="{{$department->department_name_en}}" class="form-control">
                   </div>
                   @error('department_name_en')

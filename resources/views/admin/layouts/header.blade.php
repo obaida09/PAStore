@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir={{ direction() }}>
 
 <head>
   <meta charset="utf-8" />
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="./assets/img/logo-h.png">
@@ -10,15 +11,14 @@
     {{ isset($title) ? $title : "Admin Panel" }}
   </title>
   <!--     Fonts and icons     -->
-  <link rel="stylesheet" type="text/css"
-    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
   <!-- Nucleo Icons -->
   <link href="{{ asset('admin/assets/css/nucleo-icons.css') }}" rel="stylesheet" />
   <link href="{{ asset('admin/assets/css/nucleo-svg.css') }}" rel="stylesheet" />
+  <!-- Wizard -->
+  <link href="{{ asset('admin/assets/css/wizard.css') }}" rel="stylesheet" />
   <!-- Font Awesome Icons -->
   <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-  <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="{{ asset('assets/css/material-bootstrap-wizard.css') }}" rel="stylesheet" />
   <!-- Datepicker -->
   <link href="{{ asset('admin/assets/css/bootstrap-datepicker.css') }}" rel="stylesheet" />
   <!-- js tree -->
@@ -28,21 +28,12 @@
   <link href="{{ asset('admin/DataTables/Buttons/css/buttons.dataTables.css') }}" rel="stylesheet" />
   <link href="{{ asset('admin/DataTables/Responsive/css/responsive.dataTables.css') }}" rel="stylesheet" />
 
-    <!-- Material Icons -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
-    <!-- CSS Files -->
-    <link id="pagestyle" href="{{ asset('admin/assets/css/material-dashboard.css?v=3.0.0') }}" rel="stylesheet" />
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+  <!-- CSS Files -->
+  <link id="pagestyle" href="{{ asset('admin/assets/css/material-dashboard.css?v=3.0.0') }}" rel="stylesheet" />
 
-
-  <link rel="stylesheet"
-    href="http://www.orangehilldev.com/jstree-bootstrap-theme/demo/assets/dist/themes/proton/style.css" />
-
-  <!--
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
-  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.0.1/css/buttons.bootstrap5.min.css">
-  <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css">
--->
+  <link rel="stylesheet" href="http://www.orangehilldev.com/jstree-bootstrap-theme/demo/assets/dist/themes/proton/style.css" />
 
   <style>
     /* body overlay model */
@@ -70,8 +61,13 @@
 
 
     @media screen and (min-width: 1200px) {
-      .margin-nav {
+      .ltr .margin-nav {
         margin-left: 17.125rem;
+      }
+    }
+    @media screen and (min-width: 1200px) {
+      .rtl .margin-nav {
+        margin-right: 17.125rem;
       }
     }
 
@@ -87,33 +83,37 @@
       margin: -4% 0 0 1%;
     }
 
-    /* fix input */
-    .input-group  {
-      display: block;
-    }
-
-    .full{
+    .full {
       padding: 0 20px;
+      ll
     }
 
-    /* fix ul in the wizard */
-    .nav.nav-pills {
-      line-height: 38px;
-    }
+      {
+        {
+        --
 
-    /* fix textarea in the wizard */
-    .long {
-      height: 110px;
-      padding: 10px 0px;
-    }
+        /* fix ul in the wizard */
+        .nav.nav-pills {
+          line-height: 38px;
+        }
 
-    /* fix button in the wizard */
-    .pull-right {
-      float: right !important;
-    }
+        /* fix textarea in the wizard */
+        .long {
+          height: 110px;
+          padding: 10px 0px;
+        }
 
-    .pull-left {
-      float: left !important;
+        /* fix button in the wizard */
+        .pull-right {
+          float: right !important;
+        }
+
+        .pull-left {
+          float: left !important;
+        }
+
+        --
+      }
     }
 
 
@@ -230,17 +230,17 @@
     }
 
 
-    .jstree-default .jstree-wholerow-hovered{
-      background: linear-gradient(to bottom,#e32f6e4f 0,#e32f6e2f 100%);
+    .jstree-default .jstree-wholerow-hovered {
+      background: linear-gradient(to bottom, #e32f6e4f 0, #e32f6e2f 100%);
     }
-    .jstree-default .jstree-wholerow-clicked{
-      background: linear-gradient(to bottom,#e32f6ea6 0,#e32f6e83 100%);
+
+    .jstree-default .jstree-wholerow-clicked {
+      background: linear-gradient(to bottom, #e32f6ea6 0, #e32f6e83 100%);
     }
 
   </style>
 
-
+  @livewireStyles
 </head>
 
-<body class="g-sidenav-show  bg-gray-200">
-  {{-- <div class="overlay"></div> --}}
+<body class="g-sidenav-show bg-gray-200 {{ direction() }}">

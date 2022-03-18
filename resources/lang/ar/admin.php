@@ -10,7 +10,7 @@ return [
 	'forgot_password'              => 'نسيت كلمة المرور',
 	'the_link_reset_sent'          => 'ارسل رابط استعادة الحساب',
 	'admin'                        => 'حسابات المشرفين',
-	'dashboard'                    => 'الرئيسية',
+
 	'create_admin'                 => 'اضف مشرف جديد',
 	'ex_excel'                     => 'تصدير ك Excel',
 	'ex_csv'                       => 'تصدير ك CSV',
@@ -23,7 +23,7 @@ return [
 	'sInfoEmpty'                   => 'معلومات خالية',
 	'sInfoFiltered'                => 'معلومات منتقاه',
 	'sInfoPostFix'                 => '',
-	'sSearch'                      => 'بحث',
+	'Search'                      => 'بحث',
 	'sUrl'                         => '',
 	'sInfoThousands'               => '',
 	'sLoadingRecords'              => 'تحميل السجلات',
@@ -69,7 +69,7 @@ return [
 	'status'                       => 'الحالة',
 	'open'                         => 'مفتوح',
 	'message_maintenance'          => 'رسالة الصيانة',
-	'countries'                    => 'الدول',
+
 	'create_countries'             => 'اضافة دولة جديدة',
 	'country_name_ar'              => 'اسم الدولة عربى',
 	'country_name_en'              => 'اسم الدولة انجليزى',
@@ -80,12 +80,12 @@ return [
 	'city_name_ar'                 => 'اسم المدينة بالعربى',
 	'city_name_en'                 => 'اسم المدينة بالانجليزية',
 	'country_id'                   => 'الدولة',
-	'states'                       => 'المناطق / الاحياء',
+
 	'create_states'                => 'إضافة منطقة جديدة',
 	'state_name_ar'                => 'اسم المنطقة بالعربى',
 	'state_name_en'                => 'اسم المنطقة بالانجليزية',
 	'city_id'                      => 'المدينة',
-	'departments'                  => 'الاقسام',
+
 	'department'                   => 'القسم',
 	'dep_name_ar'                  => 'اسم القسم بالعربى',
 	'dep_name_en'                  => 'اسم القسم بالانجليزية',
@@ -93,13 +93,13 @@ return [
 	'icon'                         => 'الرمز',
 	'description'                  => 'الوصف',
 	'keyword'                      => 'الكلمات الدليلية',
-	'trademarks'                   => 'العلامات التجارية',
+
 	'name_en'                      => 'الاسم بالانجليزية',
 	'name_ar'                      => 'الاسم بالعربي',
 	'create_trademarks'            => 'إضافة علامة تجارية',
 	'trade_icon'                   => 'شعار العلامة التجارية',
 	'ship_icon'                    => 'شعار الشركة',
-	'manufacturers'                => 'المصنعين',
+
 	'mobile'                       => 'الجوال',
 	'facebook'                     => 'فيسبوك',
 	'twitter'                      => 'تويتر',
@@ -111,16 +111,16 @@ return [
 	'address'                      => 'العنوان',
 	'shipping'                     => 'شركات الشحن',
 	'owner_id'                     => 'المالك',
-	'malls'                        => 'الممجمعات التجارية',
+
 	'mall_icon'                    => 'شعار المول',
 	'colors'                       => 'الالوان',
-	'color'                        => 'اللون',
-	'sizes'                        => 'المقاسات',
+
+
 	'is_public'                    => 'مقاس عام',
 	'products'                     => 'المنتجات',
-	'weights'                      => 'الاحجام',
+
 	'currency'                     => 'العملة',
-	'product_info'                 => 'معلومات المنتج',
+
 	'product_setting'              => 'اعدادات المنتج',
 	'product_media'                => 'وسائط المنتج',
 	'product_size_weight'          => 'معلومات الشحن',

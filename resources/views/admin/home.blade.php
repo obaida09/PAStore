@@ -28,8 +28,8 @@
             <i class="material-icons opacity-10">person</i>
           </div>
           <div class="text-end pt-1">
-            <p class="text-sm mb-0 text-capitalize">User's Count</p>
-            <h4 class="mb-0">{{$userLastMonth->count()}}</h4>
+            <p class="text-sm mb-0 text-capitalize"><a href="{{url('admin/user')}}">User's</a></p>
+            <h4 class="mb-0">{{$user->count()}}</h4>
           </div>
         </div>
         <hr class="dark horizontal my-0">
@@ -42,11 +42,11 @@
       <div class="card">
         <div class="card-header p-3 pt-2">
           <div class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute">
-            <i class="material-icons opacity-10">person</i>
+            <i class="fab fa-product-hunt"></i>
           </div>
           <div class="text-end pt-1">
-            <p class="text-sm mb-0 text-capitalize">New Clients</p>
-            <h4 class="mb-0">3,462</h4>
+            <p class="text-sm mb-0 text-capitalize"><a href="{{url('admin/product')}}">Product's</a></p>
+            <h4 class="mb-0">{{$product->count()}}</h4>
           </div>
         </div>
         <hr class="dark horizontal my-0">
@@ -482,5 +482,5 @@
   </div>
 
 </div>
-</main>
+
 @endsection

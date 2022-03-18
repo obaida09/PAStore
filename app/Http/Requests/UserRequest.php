@@ -15,26 +15,36 @@ class UserRequest extends FormRequest
      */
     public function authorize()
     {
-        return auth()->check();
+        return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function rules()
+    protected function onCreate()
     {
         return [
-            'name' => [
-                'required', 'min:3'
-            ],
-            'email' => [
-                'required', 'email', Rule::unique((new User)->getTable())->ignore($this->route()->user->id ?? null)
-            ],
-            'password' => [
-                $this->route()->user ? 'nullable' : 'required', 'confirmed', 'min:6'
-            ]
+            'name'     => ['required', 'string', 'max:20'],
+            'email'    => ['required', 'email', 'max:255', 'unique:users'],
+            'level'    => ['required', 'in:user,company,vendor'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
         ];
+    }
+
+    protected function onUpdate()
+    {
+        return [
+            'name'     => ['required', 'string', 'max:20'],
+            'level'    => ['required', 'in:user,company,vendor'],
+            'password' => ['sometimes', 'nullable','min:8', 'confirmed'],
+            'email'    => [
+                'required', 'email', 'max:255',
+                Rule::unique('users')->ignore($this->user),
+            ],
+        ];
+    }
+
+
+    public function rules()
+    {
+        return request()->isMethod('PUT') || request()->isMethod('patch') ?
+        $this->onUpdate() : $this->onCreate();
     }
 }

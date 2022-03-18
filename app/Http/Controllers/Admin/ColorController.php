@@ -6,6 +6,7 @@ use App\DataTables\ColorDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\Color;
 use Illuminate\Http\Request;
+use App\Http\Requests\ColorRequest;
 
 class ColorController extends Controller
 {
@@ -16,58 +17,56 @@ class ColorController extends Controller
   }
 
 
-    public function create()
-    {
-      $title = 'Create Color';
-		  return view('admin.colors.create', compact('title'));
+  public function store(ColorRequest $request)
+  {
+    if ($request->ajax()) {
+      Color::create($request->all());
+      return 'Color Create successfully';
     }
+    return abort('403');
+  }
+
+  
+  public function edit($id)
+  {
+    $data = Color::find($id);
+    return response()->json($data);
+  }
 
 
-    public function store(Request $request)
-    {
-      $data = $this->validate(request(),
-			[
-				'name_ar' => 'required',
-				'name_en' => 'required',
-        'color' => 'required',
-			]);
-
-		Color::create($data);
-		return redirect()->route('color.index')->with('success','Color delete successfully');
+  public function update(ColorRequest $request, $id)
+  {
+    if ($request->ajax()) {
+      Color::where('id', $id)->update($request->all());
+      return 'Color Update successfully';
     }
-
-    public function show(Color $color)
-    {
-        //
-    }
+    return abort('403');
+  }
 
 
-    public function edit($id)
-    {
-    $color = Color::find($id);
-		$title   = 'City Edit';
-		return view('admin.colors.edit', compact('color', 'title'));
-    }
-
-
-    public function update(Request $request, $id)
-    {
-      $data = $this->validate(request(),
-			[
-				'name_ar' => 'required',
-				'name_en' => 'required',
-        'color' => 'required',
-			]);
-
-		Color::where('id', $id)->update($data);
-		return redirect()->back()->with('success','Color delete successfully');
-    }
-
-
-    public function destroy($id)
-    {
+  public function destroy(Request $request, $id)
+  {
+    if ($request->ajax()) {
       $color = Color::find($id);
       $color->delete();
-      return redirect()->route('color.index')->with('success','Color delete successfully');
+      return 'Color Delete successfully';
     }
+    return abort('403');
+  }
+
+  public function multi_delete(Request $request) 
+  {
+    if ($request->ajax()) {
+      $item = request('item');
+      if ($item != null ) {
+        if (is_array($item) && $item != null ) {
+          Color::destroy($item);
+        } else {
+          Color::find($item)->delete();
+        }
+        return 'Cities Deleted successfully';
+      }
+    }
+    return abort('403');
+  }
 }

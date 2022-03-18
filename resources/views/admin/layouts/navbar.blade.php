@@ -15,7 +15,7 @@
           <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="nav-icon fas fa-tachometer-alt"></i>
           </div>
-          <span class="nav-link-text ms-1">Dashboard</span>
+          <span class="nav-link-text ms-1">{{ __('sideNav.dashboard') }}</span>
         </a>
       </li>
 
@@ -24,7 +24,7 @@
           <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="nav-icon fas fa-users-cog"></i>
           </div>
-          <span class="nav-link-text ms-1">Admins Acoounts</span>
+          <span class="nav-link-text ms-1">{{ __('sideNav.admin') }}</span>
         </a>
       </li>
 
@@ -33,7 +33,7 @@
           <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="nav-icon fas fa-users"></i>
           </div>
-          <span class="nav-link-text ms-1">User Acoounts</span>
+          <span class="nav-link-text ms-1">{{ __('sideNav.user') }}</span>
         </a>
       </li>
 
@@ -42,7 +42,7 @@
           <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="nav-icon fas fa-globe"></i>
           </div>
-          <span class="nav-link-text ms-1">Countreis</span>
+          <span class="nav-link-text ms-1">{{ __('sideNav.countries') }}</span>
         </a>
       </li>
 
@@ -51,7 +51,7 @@
           <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="nav-icon fas fa-city"></i>
           </div>
-          <span class="nav-link-text ms-1">City</span>
+          <span class="nav-link-text ms-1">{{ __('sideNav.cities') }}</span>
         </a>
       </li>
 
@@ -60,7 +60,7 @@
           <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="nav-icon fas fa-city"></i>
           </div>
-          <span class="nav-link-text ms-1">State</span>
+          <span class="nav-link-text ms-1">{{ __('sideNav.states') }}</span>
         </a>
       </li>
 
@@ -69,7 +69,7 @@
           <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="nav-icon fab fa-dyalog"></i>
           </div>
-          <span class="nav-link-text ms-1">Department</span>
+          <span class="nav-link-text ms-1">{{ __('sideNav.departments') }}</span>
         </a>
       </li>
 
@@ -78,7 +78,7 @@
           <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="nav-icon fas fa-trademark"></i>
           </div>
-          <span class="nav-link-text ms-1">Trademark</span>
+          <span class="nav-link-text ms-1">{{ __('sideNav.trademarks') }}</span>
         </a>
       </li>
 
@@ -87,7 +87,7 @@
           <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="nav-icon fas fa-industry"></i>
           </div>
-          <span class="nav-link-text ms-1">Manufacture</span>
+          <span class="nav-link-text ms-1">{{ __('sideNav.manufacturers') }}</span>
         </a>
       </li>
 
@@ -96,7 +96,7 @@
           <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="nav-icon fab fa-mastodon"></i>
           </div>
-          <span class="nav-link-text ms-1">Mall</span>
+          <span class="nav-link-text ms-1">{{ __('sideNav.malls') }}</span>
         </a>
       </li>
 
@@ -105,7 +105,7 @@
           <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="nav-icon fas fa-paint-brush"></i>
           </div>
-          <span class="nav-link-text ms-1">Color</span>
+          <span class="nav-link-text ms-1">{{ __('sideNav.color') }}</span>
         </a>
       </li>
 
@@ -114,7 +114,7 @@
           <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="nav-icon fa fa-circle"></i>
           </div>
-          <span class="nav-link-text ms-1">Size</span>
+          <span class="nav-link-text ms-1">{{ __('sideNav.sizes') }}</span>
         </a>
       </li>
 
@@ -123,7 +123,7 @@
           <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="nav-icon fas fa-weight"></i>
           </div>
-          <span class="nav-link-text ms-1">Weight</span>
+          <span class="nav-link-text ms-1">{{ __('sideNav.weights') }}</span>
         </a>
       </li>
 
@@ -132,7 +132,7 @@
           <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="nav-icon fab fa-product-hunt"></i>
           </div>
-          <span class="nav-link-text ms-1">Product</span>
+          <span class="nav-link-text ms-1">{{ __('sideNav.product') }}</span>
         </a>
       </li>
 

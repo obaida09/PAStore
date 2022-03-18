@@ -4,11 +4,11 @@
   </a>
   <div class="card shadow-lg">
     <div class="card-header pb-0 pt-3">
-      <div class="float-start">
-        <h5 class="mt-3 mb-0">Material UI Configurator</h5>
+      <div class="float-start logo-side">
+        <h5 class="mt-3 mb-0">PA-Store</h5>
         <p>See our dashboard options.</p>
       </div>
-      <div class="float-end mt-4">
+      <div class=" mt-4 x-close">
         <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
           <i class="material-icons">clear</i>
         </button>
@@ -23,8 +23,7 @@
       </div>
       <a href="javascript:void(0)" class="switch-trigger background-color">
         <div class="badge-colors my-2 text-start">
-          <span class="badge filter bg-gradient-primary active" data-color="primary"
-            onclick="sidebarColor(this)"></span>
+          <span class="badge filter bg-gradient-primary active" data-color="primary" onclick="sidebarColor(this)"></span>
           <span class="badge filter bg-gradient-dark" data-color="dark" onclick="sidebarColor(this)"></span>
           <span class="badge filter bg-gradient-info" data-color="info" onclick="sidebarColor(this)"></span>
           <span class="badge filter bg-gradient-success" data-color="success" onclick="sidebarColor(this)"></span>
@@ -38,12 +37,18 @@
         <p class="text-sm">Choose between 2 different sidenav types.</p>
       </div>
       <div class="d-flex">
-        <button class="btn bg-gradient-dark px-3 mb-2 active" data-class="bg-gradient-dark"
-          onclick="sidebarType(this)">Dark</button>
-        <button class="btn bg-gradient-dark px-3 mb-2 ms-2" data-class="bg-transparent"
-          onclick="sidebarType(this)">Transparent</button>
-        <button class="btn bg-gradient-dark px-3 mb-2 ms-2" data-class="bg-white"
-          onclick="sidebarType(this)">White</button>
+        <button class="btn bg-gradient-dark px-3 mb-2 ms-2 active" data-class="bg-gradient-dark" onclick="sidebarType(this)">Dark</button>
+        <button class="btn bg-gradient-dark px-3 mb-2 ms-2" data-class="bg-transparent" onclick="sidebarType(this)">Transparent</button>
+        <button class="btn bg-gradient-dark px-3 mb-2 ms-2" data-class="bg-white" onclick="sidebarType(this)">White</button>
+      </div>
+
+      <div class="mt-3">
+        <h6 class="mb-0">Language</h6>
+        <p class="text-sm">Choose between 2 different Language</p>
+      </div>
+      <div class="d-flex">
+        <a href="{{ url('admin/lang/ar') }}" class="btn bg-gradient-dark px-3 mb-2 ms-2 {{ session('lang') === "ar" ? "active" : "" }}">Arabic</a>
+        <a href="{{ url('admin/lang/en') }}" class="btn bg-gradient-dark px-3 mb-2 ms-2 {{ session('lang') === "en" ? "active" : "" }}">English</a>
       </div>
       <p class="text-sm d-xl-none d-block mt-2">You can change the sidenav type just on desktop view.</p>
       <!-- Navbar Fixed -->
@@ -61,16 +66,13 @@
         </div>
       </div>
       <hr class="horizontal dark my-sm-4">
-      <a class="btn btn-outline-dark w-100" href="">View documentation</a>
       <div class="w-100 text-center">
         <span></span>
         <h6 class="mt-3">Thank you for sharing!</h6>
-        <a href="https://twitter.com/intent/tweet?text=Check%20Material%20UI%20Dashboard%20made%20by%20%40CreativeTim%20%23webdesign%20%23dashboard%20%23bootstrap5&amp;url=https%3A%2F%2Fwww.creative-tim.com%2Fproduct%2Fsoft-ui-dashboard"
-          class="btn btn-dark mb-0 me-2" target="_blank">
+        <a href="https://twitter.com/intent/tweet?text=Check%20Material%20UI%20Dashboard%20made%20by%20%40CreativeTim%20%23webdesign%20%23dashboard%20%23bootstrap5&amp;url=https%3A%2F%2Fwww.creative-tim.com%2Fproduct%2Fsoft-ui-dashboard" class="btn btn-dark mb-0 me-2" target="_blank">
           <i class="fab fa-twitter me-1" aria-hidden="true"></i> Tweet
         </a>
-        <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.creative-tim.com/product/material-dashboard"
-          class="btn btn-dark mb-0 me-2" target="_blank">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.creative-tim.com/product/material-dashboard" class="btn btn-dark mb-0 me-2" target="_blank">
           <i class="fab fa-facebook-square me-1" aria-hidden="true"></i> Share
         </a>
       </div>
@@ -85,15 +87,14 @@
 </div>
 
 
-
-
-<footer class="footer py-4  ">
+<footer class="footer py-4">
   <div class="container-fluid">
     <div class="row align-items-center justify-content-lg-between">
       <div class="col-lg-6 mb-lg-0 mb-4">
         <div class="copyright text-center text-sm text-muted text-lg-start">
           <script>
             document.write(new Date().getFullYear())
+
           </script>,
           made with <i class="fa fa-heart"></i> by
           <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>
@@ -121,11 +122,8 @@
 </footer>
 
 
-
 <!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
-</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 <!--   Core JS Files   -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
@@ -134,8 +132,8 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
 <script src="{{ asset('admin/assets/js/core/popper.min.js') }}"></script>
 <script src="{{ asset('admin/assets/js/plugins/perfect-scrollbar.min.js') }}"></script>
 <script src="{{ asset('admin/assets/js/plugins/smooth-scrollbar.min.js') }}"></script>
-
 <script src="{{ asset('admin/assets/js/plugins/chartjs.min.js') }}"></script>
+
 {{-- <script>
   var ctx = document.getElementById("chart-bars").getContext("2d");
 
@@ -383,6 +381,49 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
     },
   });
 </script> --}}
+
+
+@livewireScripts
+<script>
+  // var id = $(this).attr("data-id");
+  //     var addRoute = '{{ url("admin/city") }}' + '/' + id ;
+  //     $('#delete_city').attr('data-route', addRoute)
+  //   })
+
+  //   $("#delete_city").submit(function(e) {
+  //     e.preventDefault();
+  //     var route = $(this).attr("data-route");
+  //     $.ajax({
+  //       url: route
+  //       , type: "delete"
+  //       , headers: {
+  //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  //       }
+  //       , data: { '_token': '{{ csrf_token() }}'}
+  //       , success: function(response) {
+  //         console.log(response);
+  //         $('#deleteModal').modal('hide');
+  //         $(".text-error").text(response[0])
+  //         //if(response) {
+  //         //   $('.success').text(response.success);
+  //         //  $("#ajaxform")[0].reset();
+  //         //}
+  //       }
+  //     })
+  //   })
+
+
+
+  window.addEventListener('close', event => {
+    $("#exampleModalLong").modal('hide');
+    alert('Name updated to: ' + event.detail.newName);
+  })
+
+</script>
+
+
+
+
 <script>
   var win = navigator.platform.indexOf('Win') > -1;
   if (win && document.querySelector('#sidenav-scrollbar')) {
@@ -455,28 +496,17 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
       checkboxes[i].checked = source.checked;
     }
   }
-</script>
 
-{{-- <script>
-  $.widget.bridge('uibutton', $.ui.button)
-</script> --}}
+</script>
 
 <!-- Github buttons -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
-
-<!--  Plugin for the Wizard -->
-<script src="{{ asset('admin/assets/js/material-bootstrap-wizard.js') }}"></script>
-
 <!--  More information about jquery.validate here: http://jqueryvalidation.org/	 -->
 <script src="{{ asset('admin/assets/js/jquery.validate.min.js') }}"></script>
-
-
+<!-- wizard -->
+<script src="{{ asset('admin/assets/js/wizard.js') }}"></script>
 <!-- Datepicker -->
 <script src="{{ asset('admin/assets/js/bootstrap-datepicker.js') }}"></script>
-
-
-
-{{-- <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script> --}}
 
 <!-- jstree -->
 {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script> --}}
@@ -488,8 +518,6 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
 <script src="{{ asset('admin/DataTables/DataTables/js/jquery.dataTables.js') }}"></script>
 <script src="{{ asset('admin/DataTables/Buttons/js/dataTables.buttons.js') }}"></script>
 <script src="{{ asset('admin/DataTables/Responsive/js/dataTables.responsive.js') }}"></script>
-
-
 <script src="{{ url('/vendor/datatables/buttons.server-side.js') }}"></script>
 <script src='https://cdn.datatables.net/buttons/2.0.1/js/buttons.bootstrap5.min.js'></script>
 
@@ -498,7 +526,33 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
 
 <script src="{{ asset('js/MyScript.js') }}"></script>
 
-{{-- <script src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script> --}}
+
+<script>
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+
+  // Edit The RTL
+
+  if ($("body").hasClass('rtl')) {
+    $(".row .card .card-header .pt-1").removeClass('text-end')
+    $(".row .card .card-header .pt-1").addClass('text-start')
+    $(".row .card .card-footer p").addClass('text-start')
+    $(".nav-item .nav-link .text-center").removeClass('me-2')
+    $(".nav-item .nav-link .text-center").addClass('ms-2')
+
+    $(".logo-side").removeClass('float-start')
+    $(".logo-side").addClass('float-end')
+    $(".x-close").removeClass('float-end')
+    $(".x-close").addClass('float-start')
+    $(".badge-colors").addClass('text-end')
+    $(".card .card-body .form-check").removeClass('ms-auto')
+    $(".card .card-body .form-check").addClass('me-auto')
+  }
+
+</script>
 
 @stack('js')
 @stack('css')

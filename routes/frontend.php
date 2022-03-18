@@ -14,6 +14,5 @@ Route::get('maintenance', function () {
   if(Setting::first()->status == 'open') {
     return redirect('home3');
   }
-
   return view('maintenance');
 });

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Product;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -31,6 +32,7 @@ class HomeController extends Controller
     public function index()
     {
       $user = User::get();
+      $product = Product::get();
       $userLastMonth = User::where('created_at','<=',Carbon::now()->subdays(30))->get(['name','created_at']);
         return view('admin.home', get_defined_vars());
     }

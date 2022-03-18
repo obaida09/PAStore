@@ -90,4 +90,16 @@ class TradeMarkController extends Controller
       $trademark->delete();
       return redirect()->route('trademark.index')->with('success','TradeMark delete successfully');
     }
+
+    public function multi_delete() {
+
+      if(request('item') != null){
+        if (is_array(request('item'))) {
+          TradeMark::destroy(request('item'));
+        } else {
+          TradeMark::find(request('item'))->delete();
+        }
+      }
+      return redirect()->route('trademark.index')->with('success','TradeMark delete successfully');
+    }
 }

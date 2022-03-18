@@ -32,16 +32,16 @@
                   @method('PUT')
                   <div class="card-body">
 
-                    <div class="input-group is-filled input-group-dynamic mt-5">
-                      <label for="exampleInputEmail1" class="form-label">trademark Name in Arabic</label>
+                    <div class="input-group is-filled input-group-outline mt-5">
+                      <label class="form-label">trademark Name in Arabic</label>
                       <input type="text" name="trade_name_ar" value="{{$trademark->trade_name_ar}}" class="form-control">
                     </div>
                       @error('trade_name_ar')
                         <div style="color: rgba(255, 0, 0, 0.692)" class="form-text">{{$message}}</div>
                       @enderror
 
-                    <div class="input-group is-filled input-group-dynamic mt-5">
-                      <label for="exampleInputEmail1" class="form-label">trademark Name in English</label>
+                    <div class="input-group is-filled input-group-outline mt-5">
+                      <label class="form-label">trademark Name in English</label>
                       <input type="text" name="trade_name_en" value="{{$trademark->trade_name_en}}" class="form-control">
                     </div>
                       @error('trade_name_en')

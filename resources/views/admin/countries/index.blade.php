@@ -3,20 +3,21 @@
 @section('content')
 
 
-@if ($message = Session::get('success'))
-  <div class="position-fixed top-2 end-2 z-index-3">
-    <div class="toast fade p-2 bg-white show" role="alert" aria-live="assertive" id="successToast" aria-atomic="true">
-      <div class="toast-header border-0">
-        <i class="material-icons text-success me-2">check</i>
-        <i class="fas fa-times translate-middle-y float-end text-md ms-9 cursor-pointer" data-bs-dismiss="toast" aria-label="Close" aria-hidden="true"></i>
-      </div>
-      <hr class="horizontal dark m-0">
-      <div class="toast-body">
-          {{$message}}
-      </div>
+{{-- Notifications --}}
+
+<div class="position-fixed top-2 end-2 z-index-3">
+  <div class="toast fade p-2 bg-white hide" role="alert" aria-live="assertive" id="successToast" aria-atomic="true">
+    <div class="toast-header border-0">
+      <i class="material-icons text-success me-2">check</i>
+      <i class="fas fa-times translate-middle-y float-end text-md ms-9 cursor-pointer" data-bs-dismiss="toast" aria-label="Close" aria-hidden="true"></i>
+    </div>
+    <hr class="horizontal dark m-0">
+    <div class="toast-body">
     </div>
   </div>
-@endif
+</div>
+
+{{-- Table --}}
 
 <div class="container-fluid py-4">
   <div class="row">
@@ -29,28 +30,32 @@
         </div>
         <div class="card-body px-0 pb-2">
           <div class="table-responsive p-3">
-
-            <form action="{{url()->current() . '/destroy/all'}}" method="POST">
-              @csrf
-              @method('DELETE')
-              {!! $dataTable->table(['class'=>'table align-items-center mb-0'], true) !!}
-
-              <button type="submit" class="btn btn-danger btn-footer-table"><i class="fa fa-trash"></i></button>
-            </form>
-
+            {!! $dataTable->table(['class'=>'table align-items-center mb-0'], true) !!}
+            <!-- Button trigger modal -->
+            <a class="btn btn-danger btn-footer-table mb-0" id="reset" data-bs-toggle="modal" data-bs-target="#createModal">Create</a>
+            <a class="btn btn-danger btn-footer-table" data-bs-toggle="modal" data-bs-target="#deleteAllModal"><i class="fa fa-trash" aria-hidden="true"></i></a>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </div>
 
+{{-- create country  --}}
+
+@include('admin.countries.create')
+
+{{-- edit country  --}}
+
+@include('admin.countries.edit')
+
+{{-- delete country  --}}
+
+@include('admin.countries.delete')
 
 
-
-  @push('js')
-    {!! $dataTable->scripts() !!}
-  @endpush
+@push('js')
+{!! $dataTable->scripts() !!}
+@endpush
 
 @endsection

@@ -16,21 +16,31 @@ class AdminRequest extends FormRequest
         return true;
     }
 
-    public function rules()
+    protected function onCreate()
     {
-      return [
-        'name' => ['required', 'string', 'max:20'],
-        'email' => ['required', 'string', 'email', 'max:255', 'unique:admins'],
-        'password' => ['required', 'string', 'min:8', 'confirmed'],
-      ];
+        return [
+          'name' => ['required', 'string', 'max:20'],
+          'email' => ['required', 'string', 'email', 'max:255', 'unique:admins'],
+          'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ];
     }
 
-    public function messages()
+    protected function onUpdate()
     {
-      return [
-        'name.required' => 'Please: Write Your Name',
-        'name.max' => 'Your Name Very Long',
-        'email.required' => 'Please: Write Your Email',
-      ];
+        return [
+            'name'     => ['required', 'string', 'max:20'],
+            'password' => ['sometimes', 'nullable','min:8', 'confirmed'],
+            'email'    => [
+                'required', 'email', 'max:255',
+                Rule::unique('admins')->ignore($this->admin),
+            ],
+        ];
+    }
+
+
+    public function rules()
+    {
+        return request()->isMethod('PUT') || request()->isMethod('patch') ?
+        $this->onUpdate() : $this->onCreate();
     }
 }

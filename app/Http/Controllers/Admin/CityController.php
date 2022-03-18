@@ -7,6 +7,10 @@ use App\Http\Controllers\Controller;
 use App\Models\City;
 use App\Models\Country;
 use Illuminate\Http\Request;
+use App\Http\Requests\CityRequest;
+use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class CityController extends Controller
 {
@@ -14,76 +18,59 @@ class CityController extends Controller
   public function index(CityDataTable $city)
   {
     $title = 'Control City';
-    return $city->render('admin.cities.index', compact('title'));
+    $country = Country::all()->pluck('country_name_'.lang() , 'id');
+    return $city->render('admin.cities.index', compact('title', 'country'));
+  }
+
+  public function store(CityRequest $request)
+  {
+    if ($request->ajax()) {
+      City::create($request->all());
+      return 'City Create successfully';
+    }
+    return abort('403');
+  }
+
+  public function edit($id)
+  {
+    $data = City::find($id);
+    return response()->json($data);
   }
 
 
-    public function create()
-    {
-      $country = Country::all();
-      $title = 'Create City';
-		  return view('admin.cities.create', compact('country', 'title'));
+  public function update(CityRequest $request, $id)
+  {
+    if ($request->ajax()) {
+      City::where('id', $id)->update($request->all());
+      return 'City Update successfully';
     }
+    return abort('403');
+  }
 
 
-    public function store(Request $request)
-    {
-      $data = $this->validate(request(),
-			[
-				'city_name_ar' => 'required',
-				'city_name_en' => 'required',
-        'country_id'   => 'required|integer',
-			]);
-
-		City::create($data);
-		return redirect()->route('city.index')->with('success','Country delete successfully');
-    }
-
-    public function show(City $city)
-    {
-        //
-    }
-
-
-    public function edit($id)
-    {
-    $city = City::find($id);
-    $country = Country::all();
-		$title   = 'City Edit';
-		return view('admin.cities.edit', compact('city', 'country', 'title'));
-    }
-
-
-    public function update(Request $request, $id)
-    {
-      $data = $this->validate(request(),
-			[
-				'city_name_ar' => 'required',
-				'city_name_en' => 'required',
-        'country_id'   => 'required|integer',
-			]);
-
-		City::where('id', $id)->update($data);
-		return redirect()->back()->with('success','Country delete successfully');
-    }
-
-
-    public function destroy($id)
-    {
+  public function destroy(Request $request, $id)
+  {
+    if ($request->ajax()) {
       $city = City::find($id);
       $city->delete();
-      return redirect()->route('city.index')->with('success','Country delete successfully');
+      return 'City Delete successfully';
     }
+    return abort('403');
+  }
 
-    public function multi_delete() {
-
-      if(request('item') != null){
-        if (is_array(request('item'))) {
-          City::destroy(request('item'));
+  public function multi_delete(Request $request)
+  {
+    if ($request->ajax()) {
+      $item = request('item');
+      if ($item != null ) {
+        if (is_array($item) && $item != null ) {
+          City::destroy($item);
         } else {
-          City::find(request('item'))->delete();
+          City::find($item)->delete();
         }
+        return 'Cities Deleted successfully';
       }
-      return redirect('admin/city')->with('success', __('admin.deleted_record'));
     }
+    return abort('403');
+  }
 }

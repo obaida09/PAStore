@@ -14,9 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-Route::view('/wizard', 'wizard');
-
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
   Config::set('auth.defines', 'admin');
@@ -31,34 +28,43 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
   Route::group(['middleware' => 'admin:admin'], function () {
     Route::get('/home', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('home');
 
-    Route::resource('admin', 'AdminController');
-    Route::resource('user', 'UserController');
-    Route::resource('country', 'CountryController');
-    Route::resource('city', 'CityController');
-    Route::resource('state', 'StateController');
-    Route::resource('department', 'DepartmentController');
-    Route::resource('trademark', 'TradeMarkController');
-    Route::resource('manufacture', 'ManuFacturersController');
-    Route::resource('mall', 'MallController');
-    Route::resource('color', 'ColorController');
-    Route::resource('size', 'SizeController');
-    Route::resource('weight', 'WeightController');
-    Route::resource('product', 'ProductController');
+    Route::resource('admin'      , AdminController::class);
+    Route::resource('user'       , UserController::class);
+    Route::resource('country'    , CountryController::class);
+    Route::resource('city'       , CityController::class);
+    Route::resource('state'      , StateController::class);
+    Route::resource('department' , DepartmentController::class);
+    Route::resource('trademark'  , TradeMarkController::class);
+    Route::resource('manufacture', ManuFacturersController::class);
+    Route::resource('mall'       , MallController::class);
+    Route::resource('color'      , ColorController::class);
+    Route::resource('size'       , SizeController::class);
+    Route::resource('weight'     , WeightController::class);
+    Route::resource('product'    , ProductController::class);
 
-    Route::get('settings', 'SettingController@setting');
-    Route::post('settings', 'SettingController@setting_save');
+    Route::get('settings', [App\Http\Controllers\Admin\SettingController::class, 'setting']);
+    Route::post('settings', 'SettingController@setting_save')->name('admin.setting');
 
     Route::get('lang/{lang}', function ($lang) {
-
       session()->has('lang') ? session()->forget('lang') : '';
-
       $lang == 'ar' ? session()->put('lang', 'ar') : session()->put('lang', 'en');
-
       return back();
     });
-    Route::any('admin/destroy/all', 'AdminController@multi_delete');
-    Route::any('city/destroy/all', 'cityController@multi_delete');
+    Route::any('admin/destroy/all'       , 'AdminController@multi_delete');
+    Route::any('user/destroy/all'        , 'UserController@multi_delete');
+    Route::any('country/destroy/all'     , 'CountryController@multi_delete');
+    Route::any('city/destroy/all'        , 'cityController@multi_delete');
+    Route::any('state/destroy/all'       , 'StateController@multi_delete');
+    Route::any('department/destroy/all'  , 'DepartmentController@multi_delete');
+    Route::any('trademark/destroy/all'   , 'TradeMarkController@multi_delete');
+    Route::any('manufacture/destroy/all' , 'ManuFacturersController@multi_delete');
+    Route::any('mall/destroy/all'        , 'MallController@multi_delete');
+    Route::any('color/destroy/all'       , 'ColorController@multi_delete');
+    Route::any('size/destroy/all'        , 'SizeController@multi_delete');
+    Route::any('weight/destroy/all'      , 'WeightController@multi_delete');
+    Route::any('product/destroy/all'     , 'ProductController@multi_delete');
 
     Route::any('logout', 'AdminAuth@logout')->name('admin.logout');
   });
 });
+

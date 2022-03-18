@@ -6,6 +6,7 @@ use App\DataTables\WeightDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\Weight;
 use Illuminate\Http\Request;
+use App\Http\Requests\WeightRequest;
 
 class WeightController extends Controller
 {
@@ -16,56 +17,56 @@ class WeightController extends Controller
   }
 
 
-    public function create()
-    {
-      $title = 'Create Weight';
-		  return view('admin.weights.create', compact('title'));
+  public function store(WeightRequest $request)
+  {
+    if ($request->ajax()) {
+      Weight::create($request->all());
+      return 'Weight Create successfully';
     }
+    return abort('403');
+  }
 
 
-    public function store(Request $request)
-    {
-      $data = $this->validate(request(),
-			[
-        'name_ar'       => 'required',
-        'name_en'       => 'required',
-			]);
+  public function edit($id)
+  {
+    $data = Weight::find($id);
+    return response()->json($data);
+  }
 
-		Weight::create($data);
-		return redirect()->route('weight.index')->with('success','Country delete successfully');
+
+  public function update(WeightRequest $request, $id)
+  {
+    if ($request->ajax()) {
+      Weight::where('id', $id)->update($request->all());
+      return 'Weight Update successfully';
     }
+    return abort('403');
+  }
 
-    public function show(Weight $weight)
-    {
-        //
+
+  public function destroy(request $request, $id)
+  {
+    if ($request->ajax()) {
+      $Weight = Weight::find($id);
+      $Weight->delete();
+      return 'Weight Delete successfully';
     }
+    return abort('403');
+  }
 
-
-    public function edit($id)
-    {
-    $weight = Weight::find($id);
-		$title   = 'Size Edit';
-		return view('admin.weights.edit', compact('weight', 'title'));
+  public function multi_delete(request $request) 
+  {
+    if ($request->ajax()) {
+      $item = request('item');
+      if ($item != null ) {
+        if (is_array($item) && $item != null ) {
+          Weight::destroy($item);
+        } else {
+          Weight::find($item)->delete();
+        }
+        return 'weights Deleted successfully';
+      }
     }
-
-
-    public function update(Request $request, $id)
-    {
-      $data = $this->validate(request(),
-			[
-        'name_ar'       => 'required',
-        'name_en'       => 'required',
-			]);
-
-		Weight::where('id', $id)->update($data);
-		return redirect()->back()->with('success','Country delete successfully');
-    }
-
-
-    public function destroy($id)
-    {
-      $weight = Weight::find($id);
-      $weight->delete();
-      return redirect()->route('weight.index')->with('success','Country delete successfully');
-    }
+    return abort('403');
+  }
 }

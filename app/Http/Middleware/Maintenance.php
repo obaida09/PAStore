@@ -5,15 +5,15 @@ namespace App\Http\Middleware;
 use App\Models\Setting;
 use Closure;
 use Illuminate\Http\Request;
-
+use App\Http\Traits\ApiTrait;
 
 class Maintenance
 {
-
+  use ApiTrait;
     public function handle(Request $request, Closure $next)
     {
-      if(Setting::first()->status == 'close') {
-        return redirect('maintenance');
+      if(1==1) {
+        return $this->sendError('Maintenance is Invalid', '', '401');
       }else {
         return $next($request);
       }

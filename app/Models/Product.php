@@ -33,20 +33,20 @@ class Product extends Model
 		'reason',
 	];
 
-  // public function country()
-  // {
-  //   return $this->belongsTo('App\Models\Country');
-  // }
+  public function department()
+  {
+    return $this->belongsTo('App\Models\Department');
+  }
 
-  // public function country()
-  // {
-  //   return $this->belongsTo('App\Models\Country');
-  // }
+  public function tradeMark()
+  {
+    return $this->belongsTo('App\Models\TradeMark');
+  }
 
-  // public function country()
-  // {
-  //   return $this->belongsTo('App\Models\Country');
-  // }
+  public function manuFacture()
+  {
+    return $this->belongsTo('App\Models\ManuFacturers');
+  }
 
   // public function country()
   // {
@@ -61,5 +61,15 @@ class Product extends Model
   public function other_data()
   {
     return $this->hasMany('App\Models\OtherData');
+  }
+
+  public function ratings()
+  {
+    return $this->hasMany('App\Models\Rating');
+  }
+
+  public function views()
+  {
+    return $this->hasOne('App\Models\ProductViews');
   }
 }

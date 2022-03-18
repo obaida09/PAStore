@@ -7,16 +7,16 @@
 
 @endpush
 
-
+{{-- 
   <!--   Big container   -->
   <div class="container">
     <div class="row">
       <div class="col-sm-12 col-sm-offset-2">
         <!--      Wizard container        -->
         <div class="wizard-container pt-2">
-          {{-- <div class="box-header">
+           <div class="box-header">
             <h3 class="box-title">{{ $title }}</h3><hr><br>
-          </div> --}}
+          </div> 
           <div class="card wizard-card" data-color="red" id="wizard">
             <form  action="{{route('product.update', $product->id)}}" method="POST" enctype="multipart/form-data">
               @csrf
@@ -59,7 +59,7 @@
                   @include('admin.products.tabs.other_data')
                 </div>
 
-                {{-- @include('admin.products.tabs.related_product') --}}
+                {{-- @include('admin.products.tabs.related_product') 
 
 
                 <div class="tab-pane" id="description">
@@ -101,6 +101,79 @@
       </div>
     </div> <!-- row -->
   </div> <!--  big container -->
+ --}}
+
+
+ <section class="wizard-section">
+  <div class="row no-gutters">
+    <div class="col-lg-12 col-md-12">
+      <div class="form-wizard">
+        <form action="{{route('product.update', $product->id)}}" method="post" role="form">
+          @csrf
+          @method('PUT')
+          <div class="form-wizard-header">
+            <p></p>
+            <ul class="list-unstyled form-wizard-steps clearfix">
+              <li class="active"><a href="#f"><span>Product Details</span></a></li>
+              <li><a href="#f"><span>Department</span></a></li>
+              <li><a href="#f"><span>Setting</span></a></li>
+              <li><a href="#f"><span>Delivery</span></a></li>
+              <li><a href="#f"><span>Other Data</span></a></li>
+            </ul>
+          </div>
+
+          <fieldset class="wizard-fieldset show">
+            @include('admin.products.tabs.product-info')
+            <div class="form-group btn-move clearfix">
+              <a href="javascript:;" class="form-wizard-next-btn">Next</a>
+            </div>
+          </fieldset>	
+
+          <fieldset class="wizard-fieldset">
+            @include('admin.products.tabs.department')
+            <div class="form-group btn-move clearfix">
+              <a href="javascript:;" class="form-wizard-previous-btn">Previous</a>
+              <a href="javascript:;" class="form-wizard-next-btn">Next</a>
+            </div>
+          </fieldset>	
+
+          <fieldset class="wizard-fieldset">
+             @include('admin.products.tabs.product-setting')
+            <div class="form-group btn-move clearfix">
+              <a href="javascript:;" class="form-wizard-previous-btn">Previous</a>
+              <a href="javascript:;" class="form-wizard-next-btn">Next</a>
+            </div>
+          </fieldset>	
+
+          <fieldset class="wizard-fieldset">
+            @include('admin.products.tabs.product_size_weight')
+            <div class="form-group btn-move clearfix">
+              <a href="javascript:;" class="form-wizard-previous-btn">Previous</a>
+              <a href="javascript:;" class="form-wizard-next-btn">Next</a>
+            </div>
+          </fieldset>	
+
+          <fieldset class="wizard-fieldset">
+           @include('admin.products.tabs.other_data')
+            <div class="form-group btn-move clearfix">
+              <a href="javascript:;" class="form-wizard-previous-btn">Previous</a>
+              <button class="form-wizard-submit">Submit</button>
+            </div>
+          </fieldset>	
+
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
 
 
 
