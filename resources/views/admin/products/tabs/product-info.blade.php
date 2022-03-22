@@ -8,7 +8,7 @@
       <input name="title" value='{{$product->title}}' type="text" class="form-control">
     </div>
 
-    <div class="input-group full">
+    <div class="input-group">
       <div class="">
         <label class="form-label">Your Content</label>
         <textarea class="form-control long" name="content" rows="5">{{$product->content}}</textarea>
@@ -21,6 +21,7 @@
       <div class="btn-primary">Choose images to upload <i class="fas fa-upload"></i></div>
       <input type="file" id="image_uploads" name="photo" accept=".jpg, .jpeg, .png" multiple>
     </div>
+
     <div class="preview mt-6">
       @error('photo')
       <div style="color: rgba(255, 0, 0, 0.692)" class="form-text">{{$message}}</div>
@@ -37,6 +38,8 @@
 
 
 @push('js')
+
+{{-- Change The Select Image theme --}}
 
 <script>
   const input = document.querySelector('.file1 input');

@@ -1,8 +1,8 @@
-{!! Form::open(['route' => ['trademark.destroy', $id], 'method' => 'delete']) !!}
-<a class="btn btn-warning btn-table" href='{{ route('trademark.edit', $id) }}'><i class="fas fa-user-edit"></i></a>
-<button type="submit" class="btn btn-danger btn-table">del</button>
-{!! Form::close() !!}
-
-<button type="button"class="mr-1" data-bs-toggle="modal" data-bs-target="#updateModel" wire:click="edit({{ $id }})">
-  {{ __('Edit') }}
-</button>
+<!-- button Edit -->
+<a class="btn btn-warning btn-table edit" onclick="getData('{{route('trademark.edit', $id)}}' , '{{route('trademark.update', $id)}}')" id="btn_table_update" data-bs-toggle="modal" data-bs-target="#modalUpdate">
+  <i class="fas fa-user-edit" aria-hidden="true"></i>
+</a>
+<!-- button modal delete -->
+<a onclick="addRoute('{{route('trademark.destroy', $id)}}')" id="btn_table_delete" class="btn bg-gradient-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
+<i class="fa fa-trash"></i>
+</a>

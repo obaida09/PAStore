@@ -6,6 +6,7 @@ use App\DataTables\TradeMarkDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\TradeMark;
 use Illuminate\Http\Request;
+use App\Http\Requests\TradeMarkRequest;
 
 class TradeMarkController extends Controller
 {
@@ -24,82 +25,55 @@ class TradeMarkController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(TradeMarkRequest $request)
     {
-      $data = $this->validate(request(),
-			[
-				'trade_name_ar' => 'required',
-				'trade_name_en' => 'required',
-				// 'logo'            => 'required|'.v_image(),
-			]);
-
-		// if (request()->hasFile('logo')) {
-		// 	$data['icon'] = up()->upload([
-		// 			'file'        => 'logo',
-		// 			'path'        => 'countries',
-		// 			'upload_type' => 'single',
-		// 			'delete_file' => '',
-		// 		]);
-		// }
-
-		TradeMark::create($data);
-
-		return redirect()->route('trademark.index')->with('success','TradeMark delete successfully');
+      if ($request->ajax()) {
+        TradeMark::create($request->all());
+        return 'TradeMark Create successfully';
+      }
+      return abort('403');
     }
 
-
-    public function show(TradeMark $tradeMark)
-    {
-        //
-    }
-
-
+    
     public function edit($id)
     {
-      $trademark = TradeMark::find($id);
-		$title   = trans('admin.edit');
-		return view('admin.trademarks.edit', compact('trademark', 'title'));
+      $data = TradeMark::find($id);
+      return response()->json($data);
     }
 
-    public function update(Request $request, $id)
+    public function update(TradeMarkRequest $request, $id)
     {
-      $data = $this->validate(request(),
-			[
-				'trade_name_ar' => 'required',
-				'trade_name_en' => 'required',
-				// 'logo'            => 'required|'.v_image(),
-			]);
-
-		// if (request()->hasFile('logo')) {
-		// 	$data['logo'] = up()->upload([
-		// 			'file'        => 'logo',
-		// 			'path'        => 'countries',
-		// 			'upload_type' => 'single',
-		// 			'delete_file' => TradeMark::find($id)->logo,
-		// 		]);
-		// }
-
-		TradeMark::where('id', $id)->update($data);
-		return redirect()->back()->with('success','TradeMark delete successfully');
+      if ($request->ajax()) {
+      TradeMark::where('id', $id)->update($request->all());
+      return 'TradeMark Update successfully';
+    }
+    return abort('403');
     }
 
 
     public function destroy($id)
     {
-      $trademark = TradeMark::find($id);
-      $trademark->delete();
-      return redirect()->route('trademark.index')->with('success','TradeMark delete successfully');
+      if ($request->ajax()) {
+        $trade = TradeMark::find($id);
+        $trade->delete();
+        return 'TradeMark Delete successfully';
+      }
+      return abort('403');
     }
 
-    public function multi_delete() {
-
-      if(request('item') != null){
-        if (is_array(request('item'))) {
-          TradeMark::destroy(request('item'));
-        } else {
-          TradeMark::find(request('item'))->delete();
+    public function multi_delete() 
+    {
+      if ($request->ajax()) {
+        $item = request('item');
+        if ($item != null ) {
+          if (is_array($item) && $item != null ) {
+            TradeMark::destroy($item);
+          } else {
+            TradeMark::find($item)->delete();
+          }
+          return 'Cities Deleted successfully';
         }
       }
-      return redirect()->route('trademark.index')->with('success','TradeMark delete successfully');
-    }
+      return abort('403');
+      }
 }

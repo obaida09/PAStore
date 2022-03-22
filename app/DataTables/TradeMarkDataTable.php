@@ -54,7 +54,7 @@ class TradeMarkDataTable extends DataTable
   public function html()
   {
     return $this->builder()
-      ->setTableId('tradDatatable-table')
+      ->setTableId('tradeDatatable-table')
       ->columns($this->getColumns())
       ->minifiedAjax()
       ->parameters([

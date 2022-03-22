@@ -50,7 +50,6 @@
       , url: route
       , data: formData
       , success: function(response) {
-        console.log(response)
         jQuery.noConflict();
         $('.modalCreate').modal('hide');
 

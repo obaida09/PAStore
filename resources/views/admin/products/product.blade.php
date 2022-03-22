@@ -4,113 +4,28 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
 @push('js')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-
 @endpush
 
-{{-- 
-  <!--   Big container   -->
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12 col-sm-offset-2">
-        <!--      Wizard container        -->
-        <div class="wizard-container pt-2">
-           <div class="box-header">
-            <h3 class="box-title">{{ $title }}</h3><hr><br>
-          </div> 
-          <div class="card wizard-card" data-color="red" id="wizard">
-            <form  action="{{route('product.update', $product->id)}}" method="POST" enctype="multipart/form-data">
-              @csrf
-              @method('PUT')
-              <!--        You can switch " data-color="blue" "  with one of the next bright colors: "green", "orange", "red", "purple"             -->
+{{-- Notifications --}}
 
-              <div class="wizard-header">
-                <h3 class="wizard-title">Add a Product</h3>
-                <h5 class="mt-3">This information will let us know more about your Product.</h5>
-              </div>
-              <div class="wizard-navigation mt-3">
-                <ul>
-                  <li><a href="#details" data-toggle="tab">Product Details</a></li>
-                  <li><a href="#department" data-toggle="tab">Department</a></li>
-                  <li><a href="#setting" data-toggle="tab">Setting</a></li>
-                  <li><a href="#size_weight" data-toggle="tab">Delivery Info</a></li>
-                  <li><a href="#other_data" data-toggle="tab">Other Data</a></li>
-                </ul>
-              </div>
-
-              <div class="tab-content">
-
-                <div class="tab-pane" id="details"> 
-                  @include('admin.products.tabs.product-info')
-                </div>
-
-                <div class="tab-pane" id="department">
-                  @include('admin.products.tabs.department')
-                </div>
-
-                <div class="tab-pane" id="setting">
-                  @include('admin.products.tabs.product-setting')
-                </div>
-
-                <div class="tab-pane" id="size_weight">
-                  @include('admin.products.tabs.product_size_weight')
-                </div>
-
-                <div class="tab-pane" id="other_data">
-                  @include('admin.products.tabs.other_data')
-                </div>
-
-                {{-- @include('admin.products.tabs.related_product') 
-
-
-                <div class="tab-pane" id="description">
-                  <div class="row">
-                    <h4 class="info-text"> Drop us a small description.</h4>
-                    <div class="col-sm-6 col-sm-offset-1">
-                      <div class="form-group">
-                        <label>Room description</label>
-                        <textarea class="form-control" placeholder="" rows="6"></textarea>
-                      </div>
-                    </div>
-                    <div class="col-sm-4">
-                      <div class="form-group">
-                        <label class="control-label">Example</label>
-                        <p class="description">"The room really nice name is recognized as being a really awesome
-                          room. We use it every sunday when we go fishing and we catch a lot. It has some kind of magic
-                          shield around it."</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-              <div class="wizard-footer">
-                <div class="pull-right">
-                  <input type='button' class='btn btn-next btn-fill btn-danger btn-wd' name='next' value='Next' />
-                  <input type='submit' class='btn btn-finish btn-fill btn-danger btn-wd' name='finish' value='Finish' />
-                </div>
-                <div class="pull-left">
-                  <input type='button' class='btn btn-previous btn-fill btn-default btn-wd' name='previous'
-                    value='Previous' />
-
-                </div>
-                <div class="clearfix"></div>
-              </div>
-            </form>
-          </div>
-        </div> <!-- wizard container -->
-      </div>
-    </div> <!-- row -->
-  </div> <!--  big container -->
- --}}
-
+<div class="position-fixed top-2 end-2 z-index-3">
+  <div class="toast fade p-2 bg-white hide" role="alert" aria-live="assertive" id="successToast" aria-atomic="true">
+    <div class="toast-header border-0">
+      <i class="material-icons text-success me-2">check</i>
+      <i class="fas fa-times translate-middle-y float-end text-md ms-9 cursor-pointer" data-bs-dismiss="toast" aria-label="Close" aria-hidden="true"></i>
+    </div>
+    <hr class="horizontal dark m-0">
+    <div class="toast-body">
+    </div>
+  </div>
+</div>
 
  <section class="wizard-section">
   <div class="row no-gutters">
     <div class="col-lg-12 col-md-12">
       <div class="form-wizard">
-        <form action="{{route('product.update', $product->id)}}" method="post" role="form">
-          @csrf
-          @method('PUT')
+        <form data-route="{{route('product.update', $product->id)}}" id="updateProduct" enctype='multipart/form-data'>
+
           <div class="form-wizard-header">
             <p></p>
             <ul class="list-unstyled form-wizard-steps clearfix">
@@ -168,13 +83,9 @@
 </section>
 
 
+{{-- Ajax File --}}
 
-
-
-
-
-
-
+@include('admin.products.ajax.update')
 
 
 

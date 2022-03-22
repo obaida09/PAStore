@@ -134,256 +134,7 @@
 <script src="{{ asset('admin/assets/js/plugins/smooth-scrollbar.min.js') }}"></script>
 <script src="{{ asset('admin/assets/js/plugins/chartjs.min.js') }}"></script>
 
-{{-- <script>
-  var ctx = document.getElementById("chart-bars").getContext("2d");
 
-  new Chart(ctx, {
-    type: "bar",
-    data: {
-      labels: ["M", "T", "W", "T", "F", "S", "S"],
-      datasets: [{
-        label: "Sales",
-        tension: 0.4,
-        borderWidth: 0,
-        borderRadius: 4,
-        borderSkipped: false,
-        backgroundColor: "rgba(255, 255, 255, .8)",
-        data: [50, 20, 10, 22, 50, 10, 40],
-        maxBarThickness: 6
-      }, ],
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: {
-          display: false,
-        }
-      },
-      interaction: {
-        intersect: false,
-        mode: 'index',
-      },
-      scales: {
-        y: {
-          grid: {
-            drawBorder: false,
-            display: true,
-            drawOnChartArea: true,
-            drawTicks: false,
-            borderDash: [5, 5],
-            color: 'rgba(255, 255, 255, .2)'
-          },
-          ticks: {
-            suggestedMin: 0,
-            suggestedMax: 500,
-            beginAtZero: true,
-            padding: 10,
-            font: {
-              size: 14,
-              weight: 300,
-              family: "Roboto",
-              style: 'normal',
-              lineHeight: 2
-            },
-            color: "#fff"
-          },
-        },
-        x: {
-          grid: {
-            drawBorder: false,
-            display: true,
-            drawOnChartArea: true,
-            drawTicks: false,
-            borderDash: [5, 5],
-            color: 'rgba(255, 255, 255, .2)'
-          },
-          ticks: {
-            display: true,
-            color: '#f8f9fa',
-            padding: 10,
-            font: {
-              size: 14,
-              weight: 300,
-              family: "Roboto",
-              style: 'normal',
-              lineHeight: 2
-            },
-          }
-        },
-      },
-    },
-  });
-
-
-  var ctx2 = document.getElementById("chart-line").getContext("2d");
-
-  new Chart(ctx2, {
-    type: "line",
-    data: {
-      labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-      datasets: [{
-        label: "Mobile apps",
-        tension: 0,
-        borderWidth: 0,
-        pointRadius: 5,
-        pointBackgroundColor: "rgba(255, 255, 255, .8)",
-        pointBorderColor: "transparent",
-        borderColor: "rgba(255, 255, 255, .8)",
-        borderColor: "rgba(255, 255, 255, .8)",
-        borderWidth: 4,
-        backgroundColor: "transparent",
-        fill: true,
-        data: [50, 40, 300, 320, 500, 350, 200, 230, 500],
-        maxBarThickness: 6
-
-      }],
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: {
-          display: false,
-        }
-      },
-      interaction: {
-        intersect: false,
-        mode: 'index',
-      },
-      scales: {
-        y: {
-          grid: {
-            drawBorder: false,
-            display: true,
-            drawOnChartArea: true,
-            drawTicks: false,
-            borderDash: [5, 5],
-            color: 'rgba(255, 255, 255, .2)'
-          },
-          ticks: {
-            display: true,
-            color: '#f8f9fa',
-            padding: 10,
-            font: {
-              size: 14,
-              weight: 300,
-              family: "Roboto",
-              style: 'normal',
-              lineHeight: 2
-            },
-          }
-        },
-        x: {
-          grid: {
-            drawBorder: false,
-            display: false,
-            drawOnChartArea: false,
-            drawTicks: false,
-            borderDash: [5, 5]
-          },
-          ticks: {
-            display: true,
-            color: '#f8f9fa',
-            padding: 10,
-            font: {
-              size: 14,
-              weight: 300,
-              family: "Roboto",
-              style: 'normal',
-              lineHeight: 2
-            },
-          }
-        },
-      },
-    },
-  });
-
-  var ctx3 = document.getElementById("chart-line-tasks").getContext("2d");
-
-  new Chart(ctx3, {
-    type: "line",
-    data: {
-      labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-      datasets: [{
-        label: "Mobile apps",
-        tension: 0,
-        borderWidth: 0,
-        pointRadius: 5,
-        pointBackgroundColor: "rgba(255, 255, 255, .8)",
-        pointBorderColor: "transparent",
-        borderColor: "rgba(255, 255, 255, .8)",
-        borderWidth: 4,
-        backgroundColor: "transparent",
-        fill: true,
-        data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
-        maxBarThickness: 6
-
-      }],
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: {
-          display: false,
-        }
-      },
-      interaction: {
-        intersect: false,
-        mode: 'index',
-      },
-      scales: {
-        y: {
-          grid: {
-            drawBorder: false,
-            display: true,
-            drawOnChartArea: true,
-            drawTicks: false,
-            borderDash: [5, 5],
-            color: 'rgba(255, 255, 255, .2)'
-          },
-          ticks: {
-            display: true,
-            padding: 10,
-            color: '#f8f9fa',
-            font: {
-              size: 14,
-              weight: 300,
-              family: "Roboto",
-              style: 'normal',
-              lineHeight: 2
-            },
-          }
-        },
-        x: {
-          grid: {
-            drawBorder: false,
-            display: false,
-            drawOnChartArea: false,
-            drawTicks: false,
-            borderDash: [5, 5]
-          },
-          ticks: {
-            display: true,
-            color: '#f8f9fa',
-            padding: 10,
-            font: {
-              size: 14,
-              weight: 300,
-              family: "Roboto",
-              style: 'normal',
-              lineHeight: 2
-            },
-          }
-        },
-      },
-    },
-  });
-</script> --}}
-
-
-@livewireScripts
 <script>
   // var id = $(this).attr("data-id");
   //     var addRoute = '{{ url("admin/city") }}' + '/' + id ;
@@ -411,6 +162,50 @@
   //       }
   //     })
   //   })
+
+  
+
+//Update Product
+// $(".click").click(function() {
+//   console.log('dsaf')
+// })
+
+// $("#updateProduct").submit(function(e) {
+//   e.preventDefault();
+//   var formData = $(this).serialize();
+//   var route = $(this).attr("data-route");
+//   $.ajax({
+//     url: route
+//     , type: "PUT"
+//     , headers: {
+//       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//     }
+//     , data: formData
+//     , success: function(response) {
+//       jQuery.noConflict();
+//       $('.modalUpdate').modal('hide');
+
+//       /* Notifications Start */
+//       $(".toast-body").append(document.createTextNode(response));
+//       $('.toast').addClass('show').addClass('article-read');
+//       setTimeout(function() {
+//         $('.toast').removeClass('show').addClass('article-read');
+//         $(".toast-body").empty();
+//       }, 3000);
+//       /* Notifications End */
+//       $('#citydatatable-table').DataTable().ajax.reload();
+//     }
+//     , error: function(reject) {
+//       if (reject.status === 422) {
+//         var errors = $.parseJSON(reject.responseText).errors;
+//         $.each(errors, function(key, val) {
+//           $("#" + key + "_error").text(val[0]);
+//         });
+//       }
+//     }
+//   })
+// })
+
 
 
 
