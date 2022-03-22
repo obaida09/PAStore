@@ -66,7 +66,7 @@ companies and facilitates shipping products.
 - Maintenance, Retrieve deleted data and soft deletion services
 - Administrative structure, Admin & Users privileges and Banches
 - Direct electronic payment for products
-
+- Make Api for Frontend/Mobile
 
 
 
